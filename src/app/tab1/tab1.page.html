@@ -6,9 +6,57 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <p>
-    peidei forte
-  </p>
+<ion-content [fullscreen]="true" color="light">
+  <ion-searchbar placeholder="Buscar"></ion-searchbar>
 
+  <ion-list>
+    <ion-item-sliding>
+      <ion-item-options side="end">
+        <ion-item-option color="danger">
+          <ion-icon slot="icon-only" name="heart"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+
+      <ion-item lines="full">
+        <ion-thumbnail slot="start">
+          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOQAAADdCAMAAACc/C7aAAAAA1BMVEX/PYsJYBshAAAASElEQVR4nO3BgQAAAADDoPlTX+EAVQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACcBsWxAAHcrYvnAAAAAElFTkSuQmCC" alt=""/>
+        </ion-thumbnail>
+        <ion-label class="ion-text-wrap">
+          <div>
+            <h1>XXXX</h1>
+            <p>xx</p>
+            <p>xx</p>
+          </div>
+        </ion-label>
+        <ion-chip color="success" outline>
+          <ion-label>76%</ion-label>
+        </ion-chip>
+      </ion-item>
+    </ion-item-sliding>
+
+    <ion-item-sliding>
+      <ion-item-options side="end">
+        <ion-item-option color="danger">
+          <ion-icon slot="icon-only" name="heart"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+
+      <ion-item lines="full">
+        <ion-thumbnail slot="start">
+          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOQAAADdCAMAAACc/C7aAAAAA1BMVEX/PYsJYBshAAAASElEQVR4nO3BgQAAAADDoPlTX+EAVQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACcBsWxAAHcrYvnAAAAAElFTkSuQmCC" alt=""/>
+        </ion-thumbnail>
+        <ion-label class="ion-text-wrap">
+          <div>
+            <h1>AAAA</h1>
+            <p>aa</p>
+            <p>aa</p>
+          </div>
+        </ion-label>
+        <ion-chip color="success" outline>
+          <ion-label>67%</ion-label>
+        </ion-chip>
+      </ion-item>
+    </ion-item-sliding>
+
+  </ion-list>
 </ion-content>
