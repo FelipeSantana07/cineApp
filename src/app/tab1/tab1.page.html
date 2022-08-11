@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Filmes
+      {{titulo}}
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -10,52 +10,28 @@
   <ion-searchbar placeholder="Buscar"></ion-searchbar>
 
   <ion-list>
-    <ion-item-sliding>
-      <ion-item-options side="end">
-        <ion-item-option color="danger">
-          <ion-icon slot="icon-only" name="heart"></ion-icon>
-        </ion-item-option>
-      </ion-item-options>
-
+    <ion-item-sliding *ngFor="let filmes of listaVideos" >
       <ion-item lines="full">
         <ion-thumbnail slot="start">
-          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOQAAADdCAMAAACc/C7aAAAAA1BMVEX/PYsJYBshAAAASElEQVR4nO3BgQAAAADDoPlTX+EAVQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACcBsWxAAHcrYvnAAAAAElFTkSuQmCC" alt=""/>
+          <img [src]="filmes.cartaz" />
         </ion-thumbnail>
+
         <ion-label class="ion-text-wrap">
-          <div>
-            <h1>XXXX</h1>
-            <p>xx</p>
-            <p>xx</p>
+          <div><h1>{{filmes.nome}}</h1>
+            <p>{{filmes.lancamento}} - {{filmes.duracao}}</p>
+            <ion-badge color="danger" *ngFor="let genero of filmes.generos">{{genero}}</ion-badge>
           </div>
         </ion-label>
         <ion-chip color="success" outline>
-          <ion-label>76%</ion-label>
+          <ion-label>{{filmes.classificacao}}%</ion-label>
         </ion-chip>
       </ion-item>
-    </ion-item-sliding>
 
-    <ion-item-sliding>
       <ion-item-options side="end">
-        <ion-item-option color="danger">
+        <ion-item-option color="danger" (click)="exibirAlerta()">
           <ion-icon slot="icon-only" name="heart"></ion-icon>
         </ion-item-option>
       </ion-item-options>
-
-      <ion-item lines="full">
-        <ion-thumbnail slot="start">
-          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOQAAADdCAMAAACc/C7aAAAAA1BMVEX/PYsJYBshAAAASElEQVR4nO3BgQAAAADDoPlTX+EAVQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACcBsWxAAHcrYvnAAAAAElFTkSuQmCC" alt=""/>
-        </ion-thumbnail>
-        <ion-label class="ion-text-wrap">
-          <div>
-            <h1>AAAA</h1>
-            <p>aa</p>
-            <p>aa</p>
-          </div>
-        </ion-label>
-        <ion-chip color="success" outline>
-          <ion-label>67%</ion-label>
-        </ion-chip>
-      </ion-item>
     </ion-item-sliding>
 
   </ion-list>
