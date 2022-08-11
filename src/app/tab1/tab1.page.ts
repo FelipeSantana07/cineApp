@@ -25,20 +25,30 @@ export class Tab1Page {
       cartaz: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOQAAADdCAMAAACc/C7aAAAAA1BMVEX/PYsJYBshAAAASElEQVR4nO3BgQAAAADDoPlTX+EAVQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACcBsWxAAHcrYvnAAAAAElFTkSuQmCC',
       generos: ['xy', 'xz', 'xx'],
       pagina: '/filmeX'
+    },
+    {
+      nome: 'XXZ',
+      lancamento: 'xx/xx/xxxx',
+      duracao: 'xh xxm',
+      classificacao: 76,
+      // eslint-disable-next-line max-len
+      cartaz: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOQAAADdCAMAAACc/C7aAAAAA1BMVEX/PYsJYBshAAAASElEQVR4nO3BgQAAAADDoPlTX+EAVQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACcBsWxAAHcrYvnAAAAAElFTkSuQmCC',
+      generos: ['xy', 'xz', 'xx'],
+      pagina: '/filmeX'
     }
   ];
-  ///LINDA
+
   constructor(
     public alertController: AlertController,
     public toastController: ToastController,
     public dadosService: DadosService,
-    public route: Router
-  ) { }
+    public route: Router) { }
 
-  exibirFilme(filme: IFilmes) {
-    this.dadosService.guardarDados('filme', filme);
-    this.route.navigateByUrl('./dadosfilme.page');
-  }
+      exibirFilme(filme: IFilmes) {
+        this.dadosService.guardarDados('filme', filme);
+        this.route.navigateByUrl('/dadosfilme');
+       }
+
 
   async exibirAlerta() {
     const alert = await this.alertController.create({
