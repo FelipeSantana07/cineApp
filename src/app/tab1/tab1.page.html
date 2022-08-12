@@ -1,33 +1,49 @@
 <ion-header [translucent]="true">
   <ion-toolbar color="medium">
-    <ion-title>
-      {{titulo}}
-    </ion-title>
+    <ion-title> {{titulo}} </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true" color="light">
-  <ion-searchbar (ionChange)="buscarFilmes($event)" placeholder="Buscar"></ion-searchbar>
+  <ion-searchbar
+    (ionChange)="buscarFilmes($event)"
+    placeholder="Buscar"
+  ></ion-searchbar>
 
-  <ion-list>
-    <ion-item-sliding *ngFor="let filmes of listaVideos" >
+  <ion-list *ngIf="listaFilmes">
+
+    <ion-item lines="none" *ngIf="listaFilmes.results.length === 0">
+      <ion-label class="ion-text-center">
+        Não há filmes com esse nome...
+      </ion-label>
+    </ion-item>
+
+    <ion-item-sliding *ngFor="let filmes of listaFilmes.results">
       <ion-item lines="full" (click)="exibirFilme(filmes)">
         <ion-thumbnail slot="start">
-          <img [src]="filmes.cartaz" />
+          <img
+            *ngIf="filmes.poster_path"
+            src="https://www.themoviedb.org/t/p/w500{{filmes.poster_path}}"
+          />
+          <ion-icon *ngIf="!filmes.poster_path" name="eye-off-outline"></ion-icon>
         </ion-thumbnail>
 
         <ion-label class="ion-text-wrap">
           <div>
-            <h1>{{filmes.nome}}</h1>
-            <p>{{filmes.lancamento}} - {{filmes.duracao}}</p>
-            <ion-badge color="danger" *ngFor="let genero of filmes.generos">{{genero}}</ion-badge>
+            <h1>{{filmes.title}}</h1>
+            <p>{{filmes.release_date | date:'shortDate'}}</p>
+            <ion-badge color="danger" *ngFor="let idGenero of filmes.genre_ids"
+              >{{generos[idGenero]}}</ion-badge
+            >
           </div>
         </ion-label>
 
-        <ion-chip color="success" outline>
-          <ion-label>{{filmes.classificacao}}%</ion-label>
+        <ion-chip
+          [color]="filmes.vote_average<5?'danger' : ((filmes.vote_average<7) ? 'warning' : 'success')"
+          outline
+        >
+          <ion-label>{{filmes.vote_average}}</ion-label>
         </ion-chip>
-
       </ion-item>
 
       <ion-item-options side="end">
@@ -36,6 +52,5 @@
         </ion-item-option>
       </ion-item-options>
     </ion-item-sliding>
-
   </ion-list>
 </ion-content>

@@ -39,6 +39,4 @@ export class FilmeService {
     toast.present();
     return null;
   }
-
-
 }
