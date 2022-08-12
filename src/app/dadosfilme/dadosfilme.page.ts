@@ -1,5 +1,5 @@
-import { IFilmes } from './../models/IFilmes.models';
 import { DadosService } from './../services/dados.service';
+import { IFilmes } from '../models/IFilmes.model';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -13,7 +13,7 @@ export class DadosfilmePage implements OnInit {
 
   constructor(public dadosService: DadosService) { }
 
-  ngOnInit( ) {
+  ngOnInit() {
     this.filme = this.dadosService.pegarDados('filme');
     console.log('Filme enviado', this.filme);
   }

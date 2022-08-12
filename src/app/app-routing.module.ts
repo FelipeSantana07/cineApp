@@ -6,7 +6,6 @@ const routes: Routes = [
     path: '',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
   },
-
   {
     path: 'dadosfilme',
     loadChildren: () => import('./dadosfilme/dadosfilme.module').then( m => m.DadosfilmePageModule)

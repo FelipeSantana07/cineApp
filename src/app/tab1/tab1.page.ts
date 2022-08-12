@@ -1,5 +1,8 @@
+import { IListaFilmes } from './../models/IFilmeAPI.model';
+
+import { FilmeService } from './../services/filme.service';
 import { DadosService } from './../services/dados.service';
-import { IFilmes } from './../models/IFilmes.models';
+import { IFilmes } from '../models/IFilmes.model';
 import { Component } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
@@ -25,30 +28,35 @@ export class Tab1Page {
       cartaz: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOQAAADdCAMAAACc/C7aAAAAA1BMVEX/PYsJYBshAAAASElEQVR4nO3BgQAAAADDoPlTX+EAVQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACcBsWxAAHcrYvnAAAAAElFTkSuQmCC',
       generos: ['xy', 'xz', 'xx'],
       pagina: '/filmeX'
-    },
-    {
-      nome: 'XXZ',
-      lancamento: 'xx/xx/xxxx',
-      duracao: 'xh xxm',
-      classificacao: 76,
-      // eslint-disable-next-line max-len
-      cartaz: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOQAAADdCAMAAACc/C7aAAAAA1BMVEX/PYsJYBshAAAASElEQVR4nO3BgQAAAADDoPlTX+EAVQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACcBsWxAAHcrYvnAAAAAElFTkSuQmCC',
-      generos: ['xy', 'xz', 'xx'],
-      pagina: '/filmeX'
     }
   ];
+
+  listaFilmes: IListaFilmes;
 
   constructor(
     public alertController: AlertController,
     public toastController: ToastController,
     public dadosService: DadosService,
-    public route: Router) { }
+    public filmeService: FilmeService,
+    public route: Router
+  ) { }
 
-      exibirFilme(filme: IFilmes) {
-        this.dadosService.guardarDados('filme', filme);
-        this.route.navigateByUrl('/dadosfilme');
-       }
+  buscarFilmes(evento: any) {
+    console.log(evento.target.value);
+    const busca = evento.target.value;
+    if(busca && busca.trim() !== '') {
+      this.filmeService.buscarFilmes(busca).subscribe(dados=> {
+        console.log(dados);
+        this.listaFilmes = dados;
+      });
+    }
+  }
 
+
+  exibirFilme(filme: IFilmes) {
+    this.dadosService.guardarDados('filme', filme);
+    this.route.navigateByUrl('/dadosfilme');
+  }
 
   async exibirAlerta() {
     const alert = await this.alertController.create({
