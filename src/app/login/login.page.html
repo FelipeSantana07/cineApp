@@ -1,0 +1,23 @@
+<ion-content [fullscreen]="true">
+  <div class="center">
+
+    <ion-card color="dark">
+      <img src="assets/Roxinreel.PNG" alt="logo">
+      <ion-card-title class="ion-text-center">
+        Roxinreel
+      </ion-card-title>
+      <ion-item lines="none" color="dark">
+        <ion-label position="floating">E-Mail</ion-label>
+        <ion-input type="email" [(ngModel)]="email"></ion-input>
+      </ion-item>
+      <ion-item lines="none" color="dark">
+        <ion-label position="floating">Senha</ion-label>
+        <ion-input type="password" [(ngModel)]="senha"></ion-input>
+      </ion-item>
+      <ion-button (click)="login()" color="medium" expand="full" fill="outline">ENTRAR</ion-button>
+      <ion-button color="medium" expand="full" fill="clear">REGISTRAR-SE</ion-button>
+    </ion-card>
+
+
+  </div>
+</ion-content>
